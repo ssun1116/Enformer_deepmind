@@ -21,7 +21,7 @@ Requirements:
 *   kipoiseq (0.5.2)
 *   numpy (1.19.5)
 *   pandas (1.2.3)
-*   tensoflow (2.4.1)
+*   tensorflow (2.4.1)
 *   tensorflow-hub (0.11.0)
 
 See `requirements.txt`.
@@ -34,6 +34,40 @@ source enformer_venv/bin/activate
 pip install -r requirements.txt
 python -m enformer_test
 ```
+++ 추가 셋업 팁 (교수님 Notion 발췌, 적절하게 수정 진행해서 맞추는중)
+```
+mkdir ~/enformer
+cd ~/enformer
+mkdir data
+mkdir models
+
+# 폴더안에 파이썬 환경 만듦
+python3 -m venv enformer_venv (**원래는 python3.8, 대신 python3 사용해서 설치함 -> 문제 생기는지 tracking하기**)
+
+source enformer_venv/bin/activate
+
+# pip를 22.4로 업데이트
+/home/ssun1116/enformer/enformer_venv/bin/python3 -m pip install --upgrade pip
+
+# install
+pip install -r ~/deepmind-research/enformer/requirements.txt
+
+pip install kipoiseq==0.5.2 --quiet > /dev/null
+
+# cuda 설치 
+https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=deblocal
+
+# 만약 설치가 안된다면, 기존 cuda와 충돌 때문이니, 아래 페이지 처럼 purge로 제거하고 다시 설치하면 됨 https://askubuntu.com/questions/1280205/problem-while-installing-cuda-toolkit-in-ubuntu-18-04
+
+# test
+cd ~/lib/deepmind-research/enformer/
+python -m enformer_test
+
+# pkl 파일 다운로드
+cd ~/enformer/
+gsutil cp gs://dm-enformer/models/enformer.finetuned.SAD.robustscaler-PCA500-robustscaler.transform.pkl ./models/
+```
+
 
 ## Pre-computed variant effect predictions
 
