@@ -60,7 +60,7 @@ https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&target
 # 만약 설치가 안된다면, 기존 cuda와 충돌 때문이니, 아래 페이지 처럼 purge로 제거하고 다시 설치하면 됨 https://askubuntu.com/questions/1280205/problem-while-installing-cuda-toolkit-in-ubuntu-18-04
 
 # test
-cd ~/lib/deepmind-research/enformer/
+cd ~/deepmind-research/enformer/
 python -m enformer_test
 
 # pkl 파일 다운로드
